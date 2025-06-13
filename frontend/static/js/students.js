@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     // Add student
     document.getElementById('create-student-form')?.addEventListener('submit', async (e) => {
@@ -10,13 +11,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 
             {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 }
             });
             alert('Student added successfully!');
             e.target.reset();
         } catch (error) {
+            alert(error)
             alert('Error adding student: ' + error.response?.data?.message || error.message);
+        }
+    });
+
+    //Delete student
+    document.getElementById('delete-student-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+            const studentemail = document.getElementById('student-email').value;
+            const response = await axios.delete(`${API_URL}/students/${studentemail}`);
+            alert('Student deleted successfully!');
+            e.target.reset();
+        } catch (error) {
+            alert('Error deleting student: ' + error.response?.data?.message || error.message);
         }
     });
 });
@@ -24,7 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // list students
 
 function fetchStudents() {
-    axios.get(`${API_URL}/students/`) 
+    axios.get(`${API_URL}/students/`, 
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }) 
         .then(response => {
             const students = response.data;
             const tableBody = document.querySelector("#students-table tbody");

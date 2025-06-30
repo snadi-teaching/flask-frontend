@@ -1,3 +1,22 @@
+# Flask Application w/ Frontend
+
+## Overview
+
+This demo walks you through running a front end for your Flask application, as well as modifying it to include some new functionality.
+
+### Learning Objectives
+- Run a Flask front end
+- Practice front-end development skills (HTML, JS)
+- Understand how the source code connects to what is rendered in the browser
+
+### Prior Knowledge:
+- HTTP requests and REST APIs
+- Basic knowledge of HTML and JavaScript
+
+### Time Estimate: 15-20 minutes
+
+## Prerequisites
+You should have MongoDB installed and running
 
 ## How to run
 
@@ -12,6 +31,7 @@ pip install -r requirements.txt
 ### Run the back end
 
 ```
+cd server
 python app.py
 ```
 
@@ -21,6 +41,7 @@ In a **different terminal**, navigate to the project's directory and run
 
 ```
 source .venv/bin/activate
+cd frontend
 python frontend.py
 ```
 
